@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const helmet = require('helmet');
 const http = require('http');
-const rateLimit = require('express-rate-limit');
 const slowDown = require('express-slow-down');
 
 const app = express();
@@ -16,7 +15,7 @@ const speedLimiter = slowDown({
   delayMs: () => 500,   // Add 500ms delay per request above the limit
 });
 // Middlewares
-app.use(speedLimiter);
+// app.use(speedLimiter);
 app.use(cors({
   origin: process.env.ORIGIN || ['http://localhost:5173', 'http://localhost:4173'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
