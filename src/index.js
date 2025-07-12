@@ -15,7 +15,9 @@ const speedLimiter = slowDown({
   delayMs: () => 500,   // Add 500ms delay per request above the limit
 });
 // Middlewares
-// app.use(speedLimiter);
+app.use(speedLimiter);
+const origin = process.env.ORIGIN
+console.log(origin)
 app.use(cors({
   origin: process.env.ORIGIN || ['http://localhost:5173', 'http://localhost:4173'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
